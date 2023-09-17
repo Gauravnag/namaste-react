@@ -1,0 +1,39 @@
+.header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border: 1px solid green;
+    margin-bottom: 30px;
+}
+.logo {
+    width: 150px;
+}
+
+ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+}
+ul li {
+    padding: 5px;
+    margin: 5px;
+}
+.main_card {
+    width: 300px;
+    border: 1px solid blue;
+    padding: 5px;
+    background-color: lightgoldenrodyellow;
+    margin: 5px;
+}
+.main_card:hover {
+    border: 1px solid lightblue;
+    cursor: pointer;
+}
+.card_logo {
+    width: 100%;
+    height: 200px;
+}
+.res_container {
+    display: flex;
+    flex-wrap: wrap;
+}
