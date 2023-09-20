@@ -1,44 +1,4 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import "./index.css";
 
-// const heading = React.createElement("h1", {id: "heading"}, "This is React Course");
-// console.log(heading);
-// const jsxheading = <h1 className="heading" tabIndex="3">This is Heading using JSX</h1>;
-
-// const Title = () => {
-//     return <h1>This is from JSX</h1>
-// }
-
-// // React Functional Component
-// const Heading = () => (
-//     <div>
-//         <Title />
-//         <h1>This is React Functional Component</h1>
-//     </div>
-// )
-
-// const Headin2 = () => {
-//     return <h1>This is React Functional Component</h1>
-// }
-
-const Header = () => {
-    return(
-        <>
-            <div className="header">
-                <div>
-                    <img className="logo" src="https://tse1.mm.bing.net/th?id=OIP.0ECkYkz35AM1i-JakHXGigHaFj&pid=Api&P=0&h=180" alt="logo" />
-                </div>
-                <ul>
-                    <li>Home</li>
-                    <li>About</li>
-                    <li>Contact</li>
-                    <li>Cart</li>
-                </ul>
-            </div>
-        </>
-    )
-}
 
 const foodList = [
     {
@@ -720,46 +680,4 @@ const foodList = [
     }
   ];
 
-const Restaurant = (props) => {
-    const { name, cuisines, cloudinaryImageId } = props.food.card.card.info;
-    return(
-        <>
-        <div className="main_card">
-            <img className="card_logo" src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + cloudinaryImageId } />
-            <h2>{name}</h2>
-            <p> {cuisines} </p>
-        </div>
-     </>
-    )
-}
-
-const Body = () => {
-    return(
-        <div className="body">
-            <div className="search">Search</div>
-            <div className="res_container">
-               {
-                foodList.map((res) => {
-                  return(
-                    <Restaurant key={res.card.card.info.id} food={res} />
-                  )
-                })
-               }
-            </div>
-        </div>
-    )
-}
-
-const FoodApp = () => {
-    return(
-        <>
-            <Header />
-            <Body />
-        </>
-    )
-}
-
-// console.log(jsxheading);
-const root = ReactDOM.createRoot(document.getElementById("root"));
-// root.render(<Heading />);
-root.render(<FoodApp />)
+  export default foodList;
