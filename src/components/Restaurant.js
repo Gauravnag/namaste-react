@@ -1,7 +1,7 @@
 import {IMG_URL} from "../utils/constant";
 
 const Restaurant = (props) => {
-    const { name, cuisines, cloudinaryImageId, avgRating } = props.food.card.card.info;
+    const { name, cuisines, cloudinaryImageId, avgRating } = props.food.info;
     return(
         <>
         <div className="main_card">
