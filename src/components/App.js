@@ -5,13 +5,13 @@ import Body from "./Body";
 import Contact from "./Contact";
 import About from "./About";
 import Error from "./Error";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
 const FoodApp = () => {
     return(
         <>
             <Header />
-            <Body />
+            <Outlet />
         </>
     )
 }
@@ -20,16 +20,22 @@ const appRouter = createBrowserRouter([
     {
         path: "/",
         element: <FoodApp />,
+        children: [
+            {
+                path: "/",
+                element: <Body />,
+            },
+            {
+                path: "/contact",
+                element: <Contact />,
+            },
+            {
+                path: "/about",
+                element: <About />,
+            }
+        ],
         errorElement: <Error />,
     },
-    {
-        path: "/contact",
-        element: <Contact />,
-    },
-    {
-        path: "/about",
-        element: <About />,
-    }
 ])
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
