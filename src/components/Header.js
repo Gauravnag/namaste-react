@@ -14,7 +14,7 @@ const Header = () => {
                 <div>
                     <img className="logo" src={LOGO_URL}  alt="logo" />
                 </div>
-                <ul>
+                <ul className="header-menu">
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/about">About</Link></li>
                     <li><Link to="/contact">Contact</Link></li>

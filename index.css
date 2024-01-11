@@ -9,12 +9,12 @@
     width: 150px;
 }
 
-ul {
+ul.header-menu {
     display: flex;
     flex-wrap: wrap;
     list-style-type: none;
 }
-ul li {
+ul.header-menu li {
     padding: 5px;
     margin: 5px;
 }
