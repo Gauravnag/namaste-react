@@ -52,3 +52,7 @@ ul.header-menu li {
     margin: 5px;
     padding: 5px;
 }
+.box {
+    padding: 10px;
+    border: 1px solid orange;
+}
