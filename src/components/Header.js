@@ -13,18 +13,18 @@ const Header = () => {
     
     return(
         <>
-            <div className="header">
+            <div className="flex justify-between bg-yellow-100 mb-9">
                 <div>
-                    <img className="logo" src={LOGO_URL}  alt="logo" />
+                    <img className="w-28" src={LOGO_URL}  alt="logo" />
                 </div>
-                <ul className="header-menu">
-                    <li><b>Your Status:</b> {onlineStatus ? "Online" : "Offline" } </li>
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/about">About</Link></li>
-                    <li><Link to="/contact">Contact</Link></li>
-                    <li><Link to="/grocery">Grocery</Link></li>
-                    <li>Cart</li>
-                    <button onClick={() => btnNameReact === "Login" ? setBtnNameReact("Logout") : setBtnNameReact("Login") }>{btnNameReact}</button>
+                <ul className="flex items-center">
+                    <li className="px-4"><b>Your Status:</b> {onlineStatus ? "Online" : "Offline" } </li>
+                    <li className="px-4"><Link to="/">Home</Link></li>
+                    <li className="px-4"><Link to="/about">About</Link></li>
+                    <li className="px-4"><Link to="/contact">Contact</Link></li>
+                    <li className="px-4"><Link to="/grocery">Grocery</Link></li>
+                    <li className="px-4">Cart</li>
+                    <button className="px-4" onClick={() => btnNameReact === "Login" ? setBtnNameReact("Logout") : setBtnNameReact("Login") }>{btnNameReact}</button>
                 </ul>
             </div>
         </>
