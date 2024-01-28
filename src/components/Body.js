@@ -27,11 +27,11 @@ const Body = () => {
 
     return listOfRestaurant.length === 0 ? <Shimmer /> : (
         <div className="body">
-            <div className="filter">
+            <div className="flex bg-yellow-100">
 
-              <div className="search">
-                <input type="text" value={searchText} onChange={(e) => {setSearchText(e.target.value)}} />
-                <button onClick={
+              <div className="p-4">
+                <input className="border-2 rounded-sm" type="text" value={searchText} onChange={(e) => {setSearchText(e.target.value)}} />
+                <button className="px-4 py-1 ml-2 rounded-sm bg-blue-100" onClick={
                   () => {
                     const filteredItems = listOfRestaurant.filter((res) => {
                                         return res.info.name.toLowerCase().includes(searchText.toLocaleLowerCase());
@@ -40,17 +40,19 @@ const Body = () => {
                   }
                 }> Search</button>
               </div>
-            
-              <button className="filter-btn" 
-              onClick={() => {
-                const filterItem = listOfRestaurant.filter((res) => {
-                  return res.info.avgRating > 4.2;
-                });
-                setListOfFilterRest(filterItem);
-              }}
-              >Top Restaurant</button>
+              <div className="flex items-center ml-10">
+                <button className="px-4 py-1 rounded-sm bg-blue-100" 
+                onClick={() => {
+                  const filterItem = listOfRestaurant.filter((res) => {
+                    return res.info.avgRating > 4.2;
+                  });
+                  setListOfFilterRest(filterItem);
+                }}
+                >Top Restaurant</button>
+              </div>
+              
             </div>
-            <div className="res_container">
+            <div className="flex flex-wrap">
                {
                 listOfFilterRest.map((res) => {
                   return(
