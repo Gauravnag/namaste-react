@@ -1,4 +1,4 @@
-import Restaurant from "./Restaurant";
+import Restaurant, {WithPromotion} from "./Restaurant";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -8,15 +8,17 @@ const Body = () => {
   const [listOfRestaurant, setListOfRestaurant] = useState([]);
   const [listOfFilterRest, setListOfFilterRest] = useState([]);
   const [searchText, setSearchText] = useState("");
-
+  
   useEffect(() => {
     fetchData();
   }, [])
 
+  const RestaurantWithPromotion = WithPromotion(Restaurant);
+
   const fetchData = async() => {
     const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.406498&lng=78.47724389999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
     const jsonConvert = await data.json();
-    console.log(jsonConvert?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    // console.log(jsonConvert?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     // Optional chaining
     setListOfRestaurant(jsonConvert?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     setListOfFilterRest(jsonConvert?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
@@ -56,7 +58,10 @@ const Body = () => {
                {
                 listOfFilterRest.map((res) => {
                   return(
-                   <Link key={res.info.id} to={"/restaurants/" + res.info.id}> <Restaurant  food={res} /> </Link>
+                   <Link key={res.info.id} to={"/restaurants/" + res.info.id}> 
+                      { res.info.availability.opened ? <RestaurantWithPromotion food={res} />  : <Restaurant  food={res} /> }
+                    {/* <Restaurant  food={res} />  */}
+                   </Link>
                   )
                 })
                }
