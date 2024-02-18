@@ -1,7 +1,10 @@
+import { useContext } from "react";
 import {IMG_URL} from "../utils/constant";
+import UserContext from "../utils/UserContext";
 
 const Restaurant = (props) => {
     const { name, cuisines, cloudinaryImageId, avgRating, costForTwo, sla } = props?.food?.info;
+    const {loggingUser} = useContext(UserContext);
     return(
         <>
         <div className="m-4 p-4 w-[250px] bg-gray-100 hover:bg-gray-400 rounded-lg">
@@ -11,6 +14,7 @@ const Restaurant = (props) => {
             <p>Rating: {avgRating} </p>
             <p>{costForTwo}</p>
             <p>{sla?.slaString}</p>
+            <p className="font-bold">{loggingUser}</p>
         </div>
      </>
     )

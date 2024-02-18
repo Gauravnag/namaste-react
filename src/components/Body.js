@@ -1,13 +1,15 @@
 import Restaurant, {WithPromotion} from "./Restaurant";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useStatusOnline from "../utils/useStatusOnline";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   const [listOfRestaurant, setListOfRestaurant] = useState([]);
   const [listOfFilterRest, setListOfFilterRest] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const {setUserName, loggingUser} = useContext(UserContext);
   
   useEffect(() => {
     fetchData();
@@ -51,6 +53,11 @@ const Body = () => {
                   setListOfFilterRest(filterItem);
                 }}
                 >Top Restaurant</button>
+              </div>
+
+              <div className="flex items-center ml-10">
+                <label className="mr-3">User:</label>
+                <input className="border-2" value={loggingUser} onChange={e => setUserName(e.target.value)} />
               </div>
               
             </div>

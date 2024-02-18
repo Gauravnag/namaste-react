@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import useStatusOnline from "../utils/useStatusOnline";
 import RestaurantCategory from "./RestaurantCategory";
+import { useState } from "react";
 
 const RestaurantMenu = () => {
 
@@ -23,6 +24,7 @@ const RestaurantMenu = () => {
     // }
 
     const menuItem = useRestaurantMenu(resId);
+    const [showIndex, setShowIndex] = useState(null);
 
     if(menuItem === null) return <Shimmer />;
 
@@ -31,7 +33,7 @@ const RestaurantMenu = () => {
     const { itemCards } = menuItem?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1].card?.card;
 
     const categories = menuItem?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(e => e.card?.card?.["@type"] == "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory" );
-    console.log(categories)
+
     return(
         <div className="w-[1200px] m-auto">
             <h1 className="font-bold mb-5 text-center">Restaurant Menu</h1>
@@ -40,7 +42,7 @@ const RestaurantMenu = () => {
             {/* <ul>
                { itemCards.map((item) =>  <li key={item.card.info.id}> {item.card.info.name} - {"Rs."}{item.card.info.price/100 || item.card.info.defaultPrice/100} </li> ) }
             </ul> */}
-            {categories.map(e => <RestaurantCategory key={e.card?.card?.title} data={e.card?.card} />)}
+            {categories.map((e, index) => <RestaurantCategory key={e.card?.card?.title} data={e.card?.card} showItems={index == showIndex ? true : false } setIndex={() => setShowIndex(index) }  />)}
           
         </div>
     )
