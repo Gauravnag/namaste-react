@@ -1,13 +1,14 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {LOGO_URL} from "../utils/constant";
 import { Link } from "react-router-dom";
 import useStatusOnline from "../utils/useStatusOnline";
+import UserContext from "../utils/UserContext";
 
 const Header = () => {
     const [btnNameReact, setBtnNameReact] = useState("Login");
-    console.log("Header");
+    const {loggingUser} = useContext(UserContext);
     useEffect(() => {
-        console.log("useEffect")
+     
     },[btnNameReact])
     const onlineStatus = useStatusOnline();
     
@@ -25,6 +26,7 @@ const Header = () => {
                     <li className="px-4"><Link to="/grocery">Grocery</Link></li>
                     <li className="px-4">Cart</li>
                     <button className="px-4" onClick={() => btnNameReact === "Login" ? setBtnNameReact("Logout") : setBtnNameReact("Login") }>{btnNameReact}</button>
+                    <li className="px-4 font-bold">{loggingUser}</li>
                 </ul>
             </div>
         </>
