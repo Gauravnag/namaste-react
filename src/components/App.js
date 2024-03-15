@@ -8,9 +8,12 @@ import Error from "./Error";
 import RestaurantMenu from "./RestaurantMenu";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import UserContext from "../utils/UserContext";
+import { Provider } from "react-redux";
+import appStore from "../utils/appStore";
+import Cart from "./Cart";
 
 const About = lazy(() => import("./About"));
-const Grocery = lazy(() => import("./Grocery") );
+const Grocery = lazy(() => import("./Grocery"));
 
 const FoodApp = () => {
     const [userName, setUserName] = useState();
@@ -20,12 +23,14 @@ const FoodApp = () => {
         }
         setUserName(data.name);
     }, [])
-    return(
+    return (
         <>
-            <UserContext.Provider value={{loggingUser: userName, setUserName}}>
-                <Header />
-                <Outlet />
-            </UserContext.Provider>
+            <Provider store={appStore}>
+                <UserContext.Provider value={{ loggingUser: userName, setUserName }}>
+                    <Header />
+                    <Outlet />
+                </UserContext.Provider>
+            </Provider>
         </>
     )
 }
